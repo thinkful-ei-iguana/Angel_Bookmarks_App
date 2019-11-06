@@ -1,6 +1,3 @@
-// import $ from 'jquery';
-
-
 //when the user presses add it generates a add form
 function handleAddBookmark () {
   $('.addNew').on('click', function(event) {
