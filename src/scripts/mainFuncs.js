@@ -1,18 +1,18 @@
-import $ from 'jquery';
-import api from './api.js';
+// import $ from 'jquery';
+
 
 //when the user presses add it generates a add form
 function handleAddBookmark () {
-  $('#addNew').on('click', function(event) {
+  $('.addNew').on('click', function(event) {
     event.preventDefault();
-    console.log('add was clicked')
+    console.log('add was clicked');
     createNewForm();
   });
 }
 
 //after add is clicked this form is rendered to input a new bookmark
 function createNewForm () {
-  $('.addBookmarkFormArea').html (`
+  $('.addFormArea').html (`
     <form class = "addedBookmarkForm">
       <label for = "newBookmarkTitle"> New Bookmark: </label>
       <input name = "newBookmarkTitle" id = "newBookmarkTitle">
@@ -63,6 +63,7 @@ function render () {}
 export default {
   createNewForm,
   generateEventListeners,
+  handleAddBookmark,
   render
 }
 
