@@ -6,12 +6,6 @@ const storeObj = {
 };
 
 
-function addBookmark(){
-  console.log(bookmark);
-  console.log(store);
-}
-
 export default {
-  storeObj,
-  addBookmark
+  storeObj
 }

@@ -1,3 +1,5 @@
+import api from "./api.js";
+
 //when the user presses add it generates a add form
 function handleAddBookmark () {
   $('.addNew').on('click', function(event) {
@@ -16,7 +18,7 @@ function createNewForm () {
       <label for = "newBookmarkURL"> URL: </label>
       <input name = "newBookmarkURL" id = "newBookmarkURL">
       <select id = "newBookmarkRating" name = "newBookmarkRating">
-        <option value="">Sort By Minimum Rating</option>
+        <option value="">Rating </option>
         <option value="5">5</option>
         <option value="4">4</option>
         <option value="3">3</option>
@@ -26,11 +28,39 @@ function createNewForm () {
       <label for = "urlDescription"> Description: </label>
       <input name = "urlDescription" id="urlDescription>
       <div class = "formButtons">
-        <button type = "submit"> Cancel </button>
-        <button id = "confirmAdd" type= "submit"> Add Bookmark</button>
+        <button class = "cancel-entry" type= "button"> Cancel </button>
+        <button class = "confirmAdd" type= "button"> Add Bookmark</button>
       </div>
     </form>
   `);
+}
+
+//when user fills out the form and wants to add their bookmark to the listing
+const handleAddBookmarkSubmit = function (){
+  $('.confirmAdd').on('click', function(event) {
+    event.preventDefault();
+    console.log('confirm was clicked');
+  });
+  // $('.confirmAdd').submit(function (event) {
+  //   event.preventDefault();
+  //   const newListing = $('.addedBookmarkForm').val();
+  //   $('.addedBookmarkForm').val('');
+  //   api.addBookmark(newListing)
+  //   .then(res => res.json())
+  //   .then((newItem) => {
+  //     store.addBookmark(newListing);
+  //     render()
+  //   });
+  // });
+  //   console.log('book mark added');
+};
+
+
+//when the user fills a bookmark form and wants to cancel the add
+function handleCancel () {
+  $('.addedBookmarkForm').on('click', '.cancel-entry', event => {
+    console.log('i was deleted');
+  })
 }
 
 //serialize form
@@ -42,25 +72,34 @@ function serializeJson(form) {
 }
 
 /*when a bookmark that has been added is pressed, it expands and shows URL,Descr., Rating and the option to delete */
-function handleExpand () {}
+function handleExpand () {
 
-//appears after added bookmark is expanded as an option
+}
+
+//appears after bookmark are expanded as an option
 function handleDelete () {}
+
 
 
 //generates the event listeners
 function generateEventListeners () {
   handleAddBookmark();
   createNewForm();
+  handleAddBookmarkSubmit();
+  handleAddBookmark();
+  handleCancel ();
+
 }
 
 //renders content
-function render () {}
+function render () {
+   
+}
 
 export default {
   createNewForm,
+  handleDelete,
   generateEventListeners,
-  handleAddBookmark,
   render
 }
 
