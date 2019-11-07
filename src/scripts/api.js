@@ -4,7 +4,7 @@ const BASE_URL = 'https://thinkful-list-api.herokuapp.com/Angel/bookmarks';
 //error handling 
 function apiFetch(...args) {
   let error;
-  return{ fetch (...args)
+  return fetch (...args)
     .then (res =>  {
       if (!res.ok) {
         error = {code: res.status}
@@ -14,22 +14,27 @@ function apiFetch(...args) {
     .then(data => {
       if (error) {
         error.message = data.message;
-        return Promise.rejects(error);
+        return Promise.reject(error);
       }
       return data;
     })
-  }  
-}
+}  
 
+const placeBookmarks = function () {
+  api.getBookmarks()
+    .then(bookmarks => {
+       mainFuncs.render(bookmarks);
+    })
+};
 
 const getBookmarks = function () {
-  return apiFetch (`${BASE_URL}/bookmarks`)
+  return apiFetch (`${BASE_URL}`)
 };
 
 
-const addBookmark = function () {
-  let newBookmark = JSON.stringify(newData);
-  return apiFetch(`${BASE_URL}/bookmarks`, {
+const addBookmark = function (newBookmark) {
+  
+  return apiFetch(`${BASE_URL}`, {
     method: 'POST',
     headers: {'content-Type': 'application/json'},
     body: newBookmark
@@ -43,6 +48,6 @@ const deleteBookmark = function () {};
 export default {
   addBookmark,
   updateBookmarks,
-  // getBookmarks,
+  getBookmarks,
   deleteBookmark
 }
