@@ -5,6 +5,7 @@ import store from './store.js';
 function handleAddBookmark () {
   $('.addNew').on('click', function(event) {
     event.preventDefault();
+      $('.addFormArea').toggle();
     console.log('add was clicked');
     createNewForm();
   });
@@ -57,24 +58,24 @@ const addBookmarkSubmit = function (){
       console.log(jsonObj);
     } else {
       //send error message that title and url are required
+      alert ('must fill form in order to add this bookmark')
     }
   });
   
 };
-
-
-//when the user fills a bookmark form and wants to cancel the add
-function handleCancel () {
-  $('.addedBookmarkForm').on('click', '.cancel-entry', event => {
-    console.log('i was deleted');
-  })
-}
 
 //serialize form
 function serializeJson(title, url, rating, desc) {
   return JSON.stringify({ 
     title, url, rating, desc
   });
+}
+
+//when the user fills a bookmark form and wants to cancel the add
+function handleCancel () {
+  $('.addedBookmarkForm').on('click', '.cancel-entry', event => {
+    console.log('i was deleted');
+  })
 }
 
 /*when a bookmark that has been added is pressed, it expands and shows URL,Descr., Rating and the option to delete */
@@ -95,7 +96,15 @@ function sortByRating () {}
 function render () {
   let htmlString = ''
   for(let i = 0; i < store.bookmarkObj.bookmarks.length; i++){
-    htmlString += `<li> title:${store.bookmarkObj.bookmarks[i].title} </li>`
+    htmlString += `
+    <button class = "accordion"> bookmarks </button>
+    <div class = "bookmarkContent" >
+      <li> Title:${store.bookmarkObj.bookmarks[i].title} </li>
+      <li>URL:${store.bookmarkObj.bookmarks[i].url}</li>
+      <li>Description:${store.bookmarkObj.bookmarks[i].desc}</li>
+      <li>Rating:${store.bookmarkObj.bookmarks[i].rating}</li></br>
+    </div>
+    `
   }
   $('.displayBookmarks').html(htmlString)
 }
