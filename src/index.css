@@ -1,6 +1,14 @@
 * {
-  background-color: whitesmoke;
+  background-color: lightblue;;
   box-sizing: border-box;
+  align-content: center;
+}
+
+.header, h1 {
+  text-align: center;
+  padding: 10px;
+  color: salmon;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .addedBookmarkForm {
@@ -11,9 +19,8 @@
   background-color: lightsalmon;
 }
 
-h1 {
-  color: crimson;
-  align-content: center;
+.header, div {
+  text-align: center;
 }
 
 .addFormArea {

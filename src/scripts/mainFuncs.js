@@ -36,7 +36,7 @@ function createNewForm () {
 }
 
 //when user fills out the form and wants to add their bookmark to the listing
-const handleAddBookmarkSubmit = function (){
+const AddBookmarkSubmit = function (){
   $('.confirmAdd').on('click', function(event) {
     event.preventDefault();
     console.log('confirm was clicked');
@@ -73,28 +73,33 @@ function serializeJson(form) {
 
 /*when a bookmark that has been added is pressed, it expands and shows URL,Descr., Rating and the option to delete */
 function handleExpand () {
-
+  $('.expandedForm').on('click', function (event){
+    event.preventDefault();
+    console.log('I am growinng');
+    this.store.bookmarkObj.bookmarks.expanded = ! this.store.bookmarkObj.bookmarks.expanded
+  })
 }
 
 //appears after bookmark are expanded as an option
 function handleDelete () {}
 
+function sortByRating () {}
 
+//renders content
+function render () {}
 
 //generates the event listeners
 function generateEventListeners () {
   handleAddBookmark();
   createNewForm();
-  handleAddBookmarkSubmit();
+  AddBookmarkSubmit();
   handleAddBookmark();
+  handleExpand();
   handleCancel ();
 
 }
 
-//renders content
-function render () {
-   
-}
+
 
 export default {
   createNewForm,
