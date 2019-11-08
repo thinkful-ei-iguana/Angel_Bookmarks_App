@@ -1,4 +1,4 @@
-import cuid from 'cuid';
+// import cuid from 'cuid';
 
 const BASE_URL = 'https://thinkful-list-api.herokuapp.com/Angel/bookmarks';
 
@@ -40,11 +40,16 @@ const addBookmark = function (newBookmark) {
     body: newBookmark
   });
 };
-const updateBookmarks = function () {
-  let updateBookmark = JSON.stringify
+const updateBookmarks = function (id, updateData) {
+  let updateBookmark = JSON.stringify(updateData);
+  return apiFetch(`${BASE_URL}/${id}`, {
+    method: 'PATCH',
+    headers: {'Content-Type' : 'application/json'},
+    body: updatedBookmark
+  });
 };
 
- const deleteBookmark = function () {
+ const deleteBookmark = function (id) {
   return apiFetch(`${BASE_URL}/${id}`, {
     method: 'DELETE'
   });
