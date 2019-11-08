@@ -20,23 +20,26 @@
   align-content: center;
 }
 
-.header, div {
-  text-align: center;
+bookmarkContent,li{
+  background: chartreuse;
 }
 
 .addFormArea {
   justify-content: center;  
   display: none;
 }
+.displayBookmarks{
+  
+  align-content: left;
+}
 
-.panel{
-  display: none;
-  overflow: hidden;
+div.bookmarkContent{
+  align-content: left;
+
 }
 
 ul {
   list-style-type: none;
-}
-
-li{
+  
+  align-content: left;
 }

@@ -28,7 +28,7 @@ function createNewForm () {
         <option value="1">1</option>
       </select>
       <label for = "Description"> Description: </label>
-      <input name = "Description" id="Description>
+      <input name = "Description" id="description>
       <div class = "formButtons">
         <button class = "cancel-entry" type= "button"> Cancel </button>
         <button class = "confirmAdd" type= "submit"> Add Bookmark</button>
@@ -45,9 +45,9 @@ const addBookmarkSubmit = function (){
     let title = $('#newBookmarkTitle').val();
     let url = $('#newBookmarkURL').val();
     let rating = $('#newBookmarkRating').val();
-    let desc = $('#Description').val();
+    let desc = $('#description').val();
 
-    if (title !== '' && url !== ''){
+    if (title !== '' && url !== '' && desc !== '' ){
       //serialize and set data
       let jsonObj = serializeJson(title, url, rating, desc);
       api.addBookmark(jsonObj)
@@ -71,35 +71,14 @@ function serializeJson(title, url, rating, desc) {
   });
 }
 
-//when the user fills a bookmark form and wants to cancel the add
-function handleCancel () {
-  $('.addedBookmarkForm').on('click', '.cancel-entry', event => {
-    console.log('i was deleted');
-  })
-}
-
-/*when a bookmark that has been added is pressed, it expands and shows URL,Descr., Rating and the option to delete */
-function handleExpand () {
-  $('.expandedForm').on('click', function (event){
-    event.preventDefault();
-    console.log('I am growinng');
-    this.store.bookmarkObj.bookmarks.expanded = ! this.store.bookmarkObj.bookmarks.expanded
-  })
-}
-
-//appears after bookmark are expanded as an option
-function handleDelete () {}
-
-function sortByRating () {}
-
 //renders content
 function render () {
   let htmlString = ''
   for(let i = 0; i < store.bookmarkObj.bookmarks.length; i++){
     htmlString += `
-    <button class = "accordion"> bookmarks </button>
+    <button class = "button" id= "delete"> Delete Bookmark </button>
     <div class = "bookmarkContent" >
-      <li> Title:${store.bookmarkObj.bookmarks[i].title} </li>
+      <li>Title:${store.bookmarkObj.bookmarks[i].title} </li>
       <li>URL:${store.bookmarkObj.bookmarks[i].url}</li>
       <li>Description:${store.bookmarkObj.bookmarks[i].desc}</li>
       <li>Rating:${store.bookmarkObj.bookmarks[i].rating}</li></br>
@@ -109,6 +88,43 @@ function render () {
   $('.displayBookmarks').html(htmlString)
 }
 
+/*when a bookmark that has been added is pressed, it expands and shows URL,Descr., Rating and the option to delete */
+function handleExpand () {
+  $('.bookmarkContent').on('click', '.expandedForm', function (event){
+    event.preventDefault();
+    console.log('I am growinng');
+    this.store.bookmarkObj.bookmarks.expanded = ! this.store.bookmarkObj.bookmarks.expanded
+  })
+}
+//gets id of bookmark to utilize in a function
+function getBookmarkId(bookmark){
+  return $(bookmark)
+  .closest('div')
+  .attr('id')
+}
+
+
+//appears after bookmark are expanded as an option
+function deletePressed () {
+  $('.displayBookmarks').on('click', '#delete', function (event){
+    let id = getBookmarkId(event.currentTarget);
+    api.deleteBookmark(id)
+      .then(( ) => {
+        store.deleteBookmark(id);
+        render();
+      });
+  });
+}
+
+function sortByRating () {}
+
+//when the user fills a bookmark form and wants to cancel the add
+function handleCancel () {
+  $('.addedBookmarkForm').on('click', '.cancel-entry', event => {
+    console.log('i was deleted');
+  })
+}
+
 //generates the event listeners
 function generateEventListeners () {
   createNewForm();
@@ -116,13 +132,11 @@ function generateEventListeners () {
   handleAddBookmark();
   handleExpand();
   handleCancel ();
-
+  deletePressed();
 }
 
 export default {
   createNewForm,
-  handleDelete,
   generateEventListeners,
   render
 }
-

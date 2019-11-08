@@ -7,10 +7,16 @@ const bookmarkObj = {
 
 function addBookmark (bookmark){
   bookmark.expanded = false;
-  this.bookmarkObj.bookmarks.push(bookmark);
+  return this.bookmarkObj.bookmarks.push(bookmark);
 }
+
+function deleteBookmark (id) {
+  this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== id);
+}
+
 
 export default {
   addBookmark,
+  deleteBookmark,
   bookmarkObj
 }
