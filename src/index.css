@@ -29,7 +29,7 @@ bookmarkContent,li{
   display: none;
 }
 .expandedFormArea{
-  
+
 }
 
 .displayBookmarks{
@@ -44,6 +44,9 @@ div.bookmarkContent{
 
 ul {
   list-style-type: none;
-
   align-content: left;
+}
+
+.addedBookmarkForm{
+  /* display: none; */
 }

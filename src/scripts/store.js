@@ -2,7 +2,8 @@ const bookmarkObj = {
   bookmarks : [],
   adding: false,
   error: null,
-  filter: 0
+  filter: 0,
+  expanded : false
 };
 
 function addBookmark (bookmark){
@@ -11,12 +12,16 @@ function addBookmark (bookmark){
 }
 
 function deleteBookmark (id) {
-  this.bookmarks = this.bookmarkObj.bookmarks.filter(bookmark => bookmark.id !== id);
+  this.bookmarkObj.bookmarks = this.bookmarkObj.bookmarks.filter(bookmark => bookmark.id !== id);
 }
 
+function filterSelected () {
+  this.bookmarkObj.filter = number;
+}
 
 export default {
   addBookmark,
   deleteBookmark,
+  filterSelected,
   bookmarkObj
 }

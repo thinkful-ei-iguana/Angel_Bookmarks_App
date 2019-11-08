@@ -6,10 +6,9 @@ function main () {
   api.getBookmarks()
   .then(bookmarks => {
     store.bookmarkObj.bookmarks = bookmarks
-    mainFuncs.render();
+    mainFuncs.renderForm();
   });
   mainFuncs.generateEventListeners();
-  // mainFuncs.render();
 };
 
 $(main);

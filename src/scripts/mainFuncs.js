@@ -16,10 +16,10 @@ function createNewForm () {
   $('.addFormArea').html (`
     <form class = "addedBookmarkForm">
       <label for = "newBookmarkTitle"> New Bookmark: </label>
-      <input name = "newBookmarkTitle" id = "newBookmarkTitle">
-      <label for = "newBookmarkURL"> URL: </label>
-      <input name = "newBookmarkURL" id = "newBookmarkURL">
-      <select id = "newBookmarkRating" name = "newBookmarkRating">
+      <input type="text" name = "newBookmarkTitle" id = "newBookmarkTitle" required >
+      <label  for = "newBookmarkURL"> URL: </label>
+      <input type="url" name = "newBookmarkURL" id = "newBookmarkURL" required>
+      <select id = "newBookmarkRating" name = "newBookmarkRating" required>
         <option value="">Rating </option>
         <option value="5">5</option>
         <option value="4">4</option>
@@ -28,7 +28,7 @@ function createNewForm () {
         <option value="1">1</option>
       </select>
       <label for = "Description"> Description: </label>
-      <input name = "Description" id="description>
+      <input type="text" name = "Description" id="description required >
       <div class = "formButtons">
         <button class = "cancel-entry" type= "button"> Cancel </button>
         <button class = "confirmAdd" type= "submit"> Add Bookmark</button>
@@ -36,6 +36,7 @@ function createNewForm () {
     </form>
   `);
 }
+
 
 //when user fills out the form and wants to add their bookmark to the listing
 const addBookmarkSubmit = function (){
@@ -46,20 +47,19 @@ const addBookmarkSubmit = function (){
     let url = $('#newBookmarkURL').val();
     let rating = $('#newBookmarkRating').val();
     let desc = $('#description').val();
-
-    if (title !== '' && url !== '' && desc !== '' ){
-      //serialize and set data
-      let jsonObj = serializeJson(title, url, rating, desc);
-      api.addBookmark(jsonObj)
-      .then((newBookmark) => {
-        store.addBookmark(newBookmark);
-        render();
-      });
-      console.log(jsonObj);
-    } else {
-      //send error message that title and url are required
-      alert ('must fill form in order to add this bookmark')
-    }
+      if (title !== '' && url !== '' ){
+        //serialize and set data
+        let jsonObj = serializeJson(title, url, rating, desc);
+        api.addBookmark(jsonObj)
+        .then((newBookmark) => {
+          store.addBookmark(newBookmark);
+         renderForm();
+        });
+        console.log(jsonObj);
+      } else {
+        //send error message that title and url are required
+        alert ('must fill form in order to add this bookmark')
+      }
   });
   
 };
@@ -72,54 +72,49 @@ function serializeJson(title, url, rating, desc) {
 }
 
 //renders content
-function render () {
+function renderForm () {
   let htmlString = ''
   for(let i = 0; i < store.bookmarkObj.bookmarks.length; i++){
     htmlString += `
-    <button class = "deletebutton" data-id=${store.bookmarkObj.bookmarks[i].id}> Delete Bookmark </button>
     <div class = "bookmarkContent" id="bookmark-content" >
       <li>Title:${store.bookmarkObj.bookmarks[i].title} </li>
-      <li>URL:${store.bookmarkObj.bookmarks[i].url}</li>
-      <li>Description:${store.bookmarkObj.bookmarks[i].desc}</li>
+      <li class="hidden"  hidden>URL:${store.bookmarkObj.bookmarks[i].url}</li>
+      <li class="hidden" hidden>Description:${store.bookmarkObj.bookmarks[i].desc}</li>
       <li>Rating:${store.bookmarkObj.bookmarks[i].rating}</li></br>
+      <button class = "deletebutton" data-id=${store.bookmarkObj.bookmarks[i].id}> Delete Bookmark </button>
+      <button class = "expand" data-id=${store.bookmarkObj.bookmarks[i].id}> + </button>
     </div>
     `
   }
   $('.displayBookmarks').html(htmlString)
 }
 
-
-//gets id of bookmark to utilize in a function
-// function getBookmarkId(bookmark){
-//   return $(bookmark)
-//   .closest('div')
-//   .attr('id')
-// }
+function handleExpand () {
+  $('.displayBookmarks').on('click', '.expand', function (event) {
+    $('.bookmarkContent', '.hidden').remove(attr)
+  })
+}
 
 //appears after bookmark are expanded as an option
 function deletePressed () {
   $('.displayBookmarks').on('click', '.deletebutton', function (event){
 
-    let id = $(event.currentTarget).siblings("div").attr("id")
+    let id = $(event.currentTarget).data("id");
     api.deleteBookmark(id)
       .then(( ) => {
         store.deleteBookmark(id);
-        render();
+        renderForm();
       });
   });
 }
 
 
 /*when a bookmark that has been added is pressed, it expands and shows URL,Descr., Rating and the option to delete */
-function handleExpand () {
-  $('.bookmarkContent').on('click', '.expandedForm', function (event){
-    event.preventDefault();
-    console.log('I am growinng');
-    this.store.bookmarkObj.bookmarks.expanded = ! this.store.bookmarkObj.bookmarks.expanded
-  })
-}
 
-function sortByRating () {}
+
+function setRating () {
+
+}
 
 //when the user fills a bookmark form and wants to cancel the add
 function handleCancel () {
@@ -141,5 +136,5 @@ function generateEventListeners () {
 export default {
   createNewForm,
   generateEventListeners,
-  render
+  renderForm
 }
