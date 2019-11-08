@@ -60,5 +60,6 @@ export default {
   addBookmark,
   updateBookmarks,
   getBookmarks,
+  placeBookmarks,
   deleteBookmark
 }

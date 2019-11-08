@@ -76,8 +76,8 @@ function render () {
   let htmlString = ''
   for(let i = 0; i < store.bookmarkObj.bookmarks.length; i++){
     htmlString += `
-    <button class = "button" id= "delete"> Delete Bookmark </button>
-    <div class = "bookmarkContent" >
+    <button class = "deletebutton" data-id=${store.bookmarkObj.bookmarks[i].id}> Delete Bookmark </button>
+    <div class = "bookmarkContent" id="bookmark-content" >
       <li>Title:${store.bookmarkObj.bookmarks[i].title} </li>
       <li>URL:${store.bookmarkObj.bookmarks[i].url}</li>
       <li>Description:${store.bookmarkObj.bookmarks[i].desc}</li>
@@ -88,6 +88,28 @@ function render () {
   $('.displayBookmarks').html(htmlString)
 }
 
+
+//gets id of bookmark to utilize in a function
+// function getBookmarkId(bookmark){
+//   return $(bookmark)
+//   .closest('div')
+//   .attr('id')
+// }
+
+//appears after bookmark are expanded as an option
+function deletePressed () {
+  $('.displayBookmarks').on('click', '.deletebutton', function (event){
+
+    let id = $(event.currentTarget).siblings("div").attr("id")
+    api.deleteBookmark(id)
+      .then(( ) => {
+        store.deleteBookmark(id);
+        render();
+      });
+  });
+}
+
+
 /*when a bookmark that has been added is pressed, it expands and shows URL,Descr., Rating and the option to delete */
 function handleExpand () {
   $('.bookmarkContent').on('click', '.expandedForm', function (event){
@@ -95,25 +117,6 @@ function handleExpand () {
     console.log('I am growinng');
     this.store.bookmarkObj.bookmarks.expanded = ! this.store.bookmarkObj.bookmarks.expanded
   })
-}
-//gets id of bookmark to utilize in a function
-function getBookmarkId(bookmark){
-  return $(bookmark)
-  .closest('div')
-  .attr('id')
-}
-
-
-//appears after bookmark are expanded as an option
-function deletePressed () {
-  $('.displayBookmarks').on('click', '#delete', function (event){
-    let id = getBookmarkId(event.currentTarget);
-    api.deleteBookmark(id)
-      .then(( ) => {
-        store.deleteBookmark(id);
-        render();
-      });
-  });
 }
 
 function sortByRating () {}

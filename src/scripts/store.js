@@ -11,7 +11,7 @@ function addBookmark (bookmark){
 }
 
 function deleteBookmark (id) {
-  this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== id);
+  this.bookmarks = this.bookmarkObj.bookmarks.filter(bookmark => bookmark.id !== id);
 }
 
 

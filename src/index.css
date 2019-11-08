@@ -28,6 +28,10 @@ bookmarkContent,li{
   justify-content: center;  
   display: none;
 }
+.expandedFormArea{
+  
+}
+
 .displayBookmarks{
   
   align-content: left;
@@ -40,6 +44,6 @@ div.bookmarkContent{
 
 ul {
   list-style-type: none;
-  
+
   align-content: left;
 }
