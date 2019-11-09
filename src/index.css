@@ -24,6 +24,10 @@ bookmarkContent,li{
   background: chartreuse;
 }
 
+.hidden{
+  display: none;
+}
+
 .addFormArea {
   justify-content: center;  
   display: none;

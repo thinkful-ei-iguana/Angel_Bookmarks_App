@@ -78,11 +78,11 @@ function renderForm () {
     htmlString += `
     <div class = "bookmarkContent" id="bookmark-content" >
       <li>Title:${store.bookmarkObj.bookmarks[i].title} </li>
-      <li class="hidden"  hidden>URL:${store.bookmarkObj.bookmarks[i].url}</li>
-      <li class="hidden" hidden>Description:${store.bookmarkObj.bookmarks[i].desc}</li>
+      <li class= "hidden" class ="toggleHidden">URL:${store.bookmarkObj.bookmarks[i].url}</li>
+      <li class= "hidden" class ="toggleHidden">Description:${store.bookmarkObj.bookmarks[i].desc}</li>
       <li>Rating:${store.bookmarkObj.bookmarks[i].rating}</li></br>
       <button class = "deletebutton" data-id=${store.bookmarkObj.bookmarks[i].id}> Delete Bookmark </button>
-      <button class = "expand" data-id=${store.bookmarkObj.bookmarks[i].id}> + </button>
+      <button class = "expand" > + </button>
     </div>
     `
   }
@@ -90,15 +90,13 @@ function renderForm () {
 }
 
 function handleExpand () {
-  $('.displayBookmarks').on('click', '.expand', function (event) {
-    $('.bookmarkContent', '.hidden').remove(attr)
+  $('.displayBookmarks').on('click','.expand', function (event) {
+    $(event.currentTarget).siblings(".toggleHidden").toggleClass("hidden")
   })
 }
-
 //appears after bookmark are expanded as an option
-function deletePressed () {
+function deletePressed () { 
   $('.displayBookmarks').on('click', '.deletebutton', function (event){
-
     let id = $(event.currentTarget).data("id");
     api.deleteBookmark(id)
       .then(( ) => {
