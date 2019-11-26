@@ -41,7 +41,7 @@ const addBookmark = function (newBookmark) {
   });
 };
 const updateBookmarks = function (id, updateData) {
-  let updateBookmark = JSON.stringify(updateData);
+  let updatedBookmark = JSON.stringify(updateData);
   return apiFetch(`${BASE_URL}/${id}`, {
     method: 'PATCH',
     headers: {'Content-Type' : 'application/json'},

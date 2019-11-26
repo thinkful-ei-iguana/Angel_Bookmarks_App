@@ -1,27 +1,36 @@
 * {
-  background-color: lightblue;;
+  font-family:'Russo One', sans-serif;
+  background-color: skyblue;
   box-sizing: border-box;
-  align-content: center;
+  border-radius: 3px;
 }
 
 .header, h1 {
   text-align: center;
   padding: 10px;
-  color: salmon;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: black;
+  font-family: 'Russo One', sans-serif;
+}
+
+.header{
+  display:inline-block ;
 }
 
 .addedBookmarkForm {
   display: flex;
   width: 80%;
   flex-direction: column;
-  border: 2px lightskyblue;
-  background-color: lightsalmon;
-  align-content: center;
+  border: 3px lightskyblue;
+  padding: 50px;
+}
+
+.addedBookmarkForm input{
+  background-color: lightgray;
 }
 
 bookmarkContent,li{
-  background: chartreuse;
+  background:lightgray;
+  
 }
 
 .hidden{
@@ -32,12 +41,8 @@ bookmarkContent,li{
   justify-content: center;  
   display: none;
 }
-.expandedFormArea{
-
-}
 
 .displayBookmarks{
-  
   align-content: left;
 }
 
@@ -49,8 +54,7 @@ div.bookmarkContent{
 ul {
   list-style-type: none;
   align-content: left;
+  background:lightgray;
 }
 
-.addedBookmarkForm{
-  /* display: none; */
-}
+
