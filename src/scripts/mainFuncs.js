@@ -1,7 +1,7 @@
 import api from "./api.js";
 import store from './store.js';
 
-//when the user presses add it generates an add form
+//when the user presses add it generates a new bookmark form
 function handleAddBookmark () {
   $('.addNew').on('click', function(event) {
     event.preventDefault();
@@ -11,6 +11,7 @@ function handleAddBookmark () {
   });
 }
 
+//hides and shows form
 function showForm(boolean){
   if(boolean){
     $('.addFormArea').show();
@@ -24,9 +25,9 @@ function createNewForm () {
   $('.addFormArea').html (`
     <form class="addedBookmarkForm" id="addedForm>
       <label for="newBookmarkTitle"> New Bookmark: </label>
-      <input type="text" name= "newBookmarkTitle" id="newBookmarkTitle" required >
+      <input type="text" name= "newBookmarkTitle" id="newBookmarkTitle" required ></br>
       <label  for="newBookmarkURL"> URL: </label>
-      <input type="url" name="newBookmarkURL" id="newBookmarkURL" required>
+      <input type="url" name="newBookmarkURL" id="newBookmarkURL" required></br>
       <select id="newBookmarkRating" name="newBookmarkRating" required>
         <option value=""> Rating... </option>
         <option value="5">5</option>
@@ -34,9 +35,9 @@ function createNewForm () {
         <option value="3">3</option>
         <option value="2">2</option>
         <option value="1">1</option>
-      </select>
+      </select></br>
       <label for = "description"> Description: </label>
-      <input type="text" name="Description" id="bookmarkDescription" required >
+      <input type="text" name="Description" id="bookmarkDescription" required ></br>
       <div class = "formButtons">
         <button class = "cancelEntry" type= "button"> Cancel </button>
         <button class = "confirmAdd" type= "submit"> Add Bookmark</button>
@@ -105,10 +106,10 @@ function renderForm (arr) {
   for(let i = 0; i < arr.length; i++){
     htmlString += `
     <ul class = "bookmarkContent" id="bookmark-content" >
-      <li>Title:${arr[i].title} </li>
-      <li class ="toggleHidden hidden">URL:${arr[i].url}</li>
-      <li class ="toggleHidden hidden">Description:${arr[i].desc}</li>
-      <li>Rating:${arr[i].rating}</li></br>
+      <li>Title: ${arr[i].title} </li>
+      <li class ="toggleHidden hidden">URL: ${arr[i].url}</li>
+      <li class ="toggleHidden hidden">Description: ${arr[i].desc}</li>
+      <li>Rating: ${arr[i].rating}</li></br>
       <button class = "deletebutton" data-id=${arr[i].id}> Delete Bookmark </button>
       <button class = "expand" > + </button>
     </ul>

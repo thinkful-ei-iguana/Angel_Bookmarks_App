@@ -1,60 +1,175 @@
 * {
   font-family:'Russo One', sans-serif;
-  background-color: skyblue;
+  background-color: rgb(96,191,254);
   box-sizing: border-box;
   border-radius: 3px;
+  
 }
+h1{
+  background: transparent;
+  padding-top: 50px;
+  padding-left: 35px;
+  padding-bottom: 50px;
+  text-decoration: black underline;
+  border: 2px solid black;
 
-.header, h1 {
-  text-align: center;
-  padding: 10px;
+}
+.title {
+  text-align: left;
   color: black;
   font-family: 'Russo One', sans-serif;
+  font-size: 25px;
+  height: 150px;
+  background-image: url(WireFrameImgs/source.gif);
+  background-size: 450px 250px;
+  background-repeat:no-repeat;
+  background-position: center;
+  
 }
 
-.header{
-  display:inline-block ;
+/* Buttons */
+button.addNew{
+  align-items: center;
+  padding: 15px;
+  color: rgb(255,255,255);
+}
+button.deletebutton{
+  padding: 15px;
+  font-size: 15px;
+  background-color:rgb(96 , 96  , 96);
+  color: rgb(255,255,255)
+}
+button.expand{
+  padding:15px;
+  font-size: 15px;
+  background-color:rgb(96 , 96  , 96);
+  justify-content: flex-end;
+  color: rgb(255,255,255);
+}
+button.confirmAdd{
+  padding: 15px;
+  background-color:rgb(96 , 96  , 96);
+  color: rgb(255,255,255);
+}
+button.cancelEntry{
+  padding:15px;
+  background-color:rgb(96 , 96  , 96);
+  color: rgb(255,255,255);
+}
+#newBookmark{
+  margin: 50px;
+  font-size: 15px;
+  background-color:rgb(96 , 96  , 96);
+}
+.filter{
+  align-items: center;
+  padding: 15px;
+  font-size: 15px;
+  background-color:rgb(96 , 96  , 96);
+  color: rgb(255,255,255);
+}
+.filter select{
+  color: rgb(96,96,96);
 }
 
+/* Form Stuff */
+div.container{
+  text-align: center;
+}
 .addedBookmarkForm {
   display: flex;
   width: 80%;
   flex-direction: column;
-  border: 3px lightskyblue;
+  border: 3px black;
   padding: 50px;
 }
-
 .addedBookmarkForm input{
-  background-color: lightgray;
+  background-color: rgb(255,255,255);
+}
+
+/* Rating Stuff */
+.rating-selection{
+  position: relative;
+  font-family:'Russo One', sans-serif; 
+}
+ #newBookmarkRating {
+  background-color:rgb(255,255,255);
+}
+.select-selected{
+  background-color:rgb(96 , 96  , 96);;
+}
+
+
+/* New Bookmark stuff */
+section.addFormArea{
+  justify-content: center;
+  border: solid black;
+  display: block;
+}
+
+/* Added Bookmark content */
+.displayBookmarks{
+  align-content: left;
 }
 
 bookmarkContent,li{
-  background:lightgray;
-  
+  background-color:rgb(255,255,255);
+  padding: 5px;
+  text-align: left;
+  text-decoration: underline black;
+}
+
+ul.bookmarkContent{
+  align-content: left;
+  border: solid black;
+  background-color:rgb(255,255,255);
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  display: inline-block;
+  justify-items:left ;
+  backgroundrgb(96 , 96  , 96);;
+  padding:0;
+  font-size: 18px;
+  width: auto    ;
+  height: auto;
+ 
 }
 
 .hidden{
   display: none;
 }
 
-.addFormArea {
-  justify-content: center;  
-  display: none;
+@media screen and (max-width: 768px ) {
+  h1{
+    padding:0;
+  }
+  .title {
+    padding-bottom: 0;
+    height: 50px;
+    text-align: center;
+    color: black;
+    font-family: 'Russo One', sans-serif;
+    font-size: 25px;
+    height: 50px;
+    background-image: url(WireFrameImgs/sharkfin.jpg);
+    background-size: 55px 55px;
+    background-position: right;
+  }
+  .filter{
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 15px;
+    background-color:rgb(96 , 96  , 96);
+    color: rgb(255,255,255);
+  }
+
+  .addedBookmarkForm {
+    align-self: center;
+    width: 100%;
+    border: 3px black;
+    padding-top: 50px;
+  }
 }
-
-.displayBookmarks{
-  align-content: left;
-}
-
-div.bookmarkContent{
-  align-content: left;
-
-}
-
-ul {
-  list-style-type: none;
-  align-content: left;
-  background:lightgray;
-}
-
-
