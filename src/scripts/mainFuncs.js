@@ -5,12 +5,20 @@ import store from './store.js';
 function handleAddBookmark () {
   $('.addNew').on('click', function(event) {
     event.preventDefault();
-      $('.addFormArea').toggle();
+    showForm(true);
     console.log('add was clicked');
     createNewForm();
   });
 }
 
+function showForm(boolean){
+  if(boolean){
+    $('.addFormArea').show();
+  }else{
+    $('.addFormArea').hide();
+  }
+
+}
 //after add is clicked this form is rendered to add a new bookmark
 function createNewForm () {
   $('.addFormArea').html (`
@@ -37,7 +45,12 @@ function createNewForm () {
   `);
 }
 
-
+function clearForm(){
+  $('#newBookmarkTitle').val('');
+  $('#newBookmarkURL').val('');
+  $('#bookmarkDescription').val('');
+  $('#newBookmarkRating').val('');
+}
 //when user fills out the form and wants to add their bookmark to the listing
 function addBookmarkSubmit (){
   $('body').on('submit', '.addedBookmarkForm', function(event) {
@@ -47,13 +60,17 @@ function addBookmarkSubmit (){
     let url = $('#newBookmarkURL').val();
     let desc = $('#bookmarkDescription').val();
     let rating = $('#newBookmarkRating').val();
+    clearForm();
       if (title !== '' && url !== '' ){
         //serialize and set data
         let jsonObj = serializeJson(title,url,rating,desc);
+        console.log(jsonObj)
         api.addBookmark(jsonObj)
         .then((newBookmark) => {
+          console.log(newBookmark)
           store.addBookmark(newBookmark);
          renderForm();
+         showForm(false);
         });
         console.log(jsonObj);
       } else {
@@ -68,30 +85,31 @@ function addBookmarkSubmit (){
 function handleCancel () {
   $('body').on('click', '.cancelEntry', function(event) {
     event.preventDefault();
-    $('.addedBookmarkForm').trigger("reset").toggle();
+    showForm(false);
+    clearForm();
     console.log('i was canceled');
   })
 }
 
-
 //serialize form
 function serializeJson(title, url, rating, desc,) {
   return JSON.stringify({ 
-    title, url, rating, desc,
+    title, url, rating, desc
   });
 }
 
 //renders Addedcontent
-function renderForm () {
+function renderForm (arr) {
+  arr= arr || store.bookmarkObj.bookmarks;
   let htmlString = ''
-  for(let i = 0; i < store.bookmarkObj.bookmarks.length; i++){
+  for(let i = 0; i < arr.length; i++){
     htmlString += `
     <ul class = "bookmarkContent" id="bookmark-content" >
-      <li>Title:${store.bookmarkObj.bookmarks[i].title} </li>
-      <li class= "hidden" class ="toggleHidden">URL:${store.bookmarkObj.bookmarks[i].url}</li>
-      <li class ="toggleHidden hidden">Description:${store.bookmarkObj.bookmarks[i].desc}</li>
-      <li>Rating:${store.bookmarkObj.bookmarks[i].rating}</li></br>
-      <button class = "deletebutton" data-id=${store.bookmarkObj.bookmarks[i].id}> Delete Bookmark </button>
+      <li>Title:${arr[i].title} </li>
+      <li class ="toggleHidden hidden">URL:${arr[i].url}</li>
+      <li class ="toggleHidden hidden">Description:${arr[i].desc}</li>
+      <li>Rating:${arr[i].rating}</li></br>
+      <button class = "deletebutton" data-id=${arr[i].id}> Delete Bookmark </button>
       <button class = "expand" > + </button>
     </ul>
     `
@@ -123,7 +141,11 @@ function deletePressed () {
 
 
 function filterRating () {
-  $('')
+  $('body').on('change','.filter', function(event) {
+    let newRating=$(event.target).find(':selected').val();
+    let newArr = store.bookmarkObj.bookmarks.filter(bookmark => bookmark.rating >= newRating) 
+    renderForm(newArr);
+  })
 }
 
 //generates the event listeners
@@ -134,6 +156,8 @@ function generateEventListeners () {
   handleExpand();
   handleCancel ();
   deletePressed();
+  filterRating();
+  clearForm();
 }
 
 export default {
