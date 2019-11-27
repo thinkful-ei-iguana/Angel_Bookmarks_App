@@ -20,7 +20,7 @@ h1{
   font-family: 'Russo One', sans-serif;
   font-size: 25px;
   height: 150px;
-  background-image: url(Images/source.gif);
+  background-image: url(Images/shark.gif);
   background-size: 450px 250px;
   background-repeat:no-repeat;
   background-position: center;
@@ -154,15 +154,18 @@ bookmarkContent,li{
  
 }
 
-.footer{
-  padding: 0;
-}
-.footersec{
+
+.site-footer{
+  /* padding: 1% 0; */
   height: 255px;
   width:100%;
   background-image: url(Images/waves.png);
   background-position: center;
   background-size: cover;
+  position: relative;
+  padding: 10,10,0,10;
+  margin-top:300px;
+  
 }
 
 .hidden{
