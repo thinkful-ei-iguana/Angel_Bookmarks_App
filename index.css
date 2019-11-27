@@ -20,7 +20,7 @@ h1{
   font-family: 'Russo One', sans-serif;
   font-size: 25px;
   height: 150px;
-  background-image: url(WireFrameImgs/source.gif);
+  background-image: url(Images/source.gif);
   background-size: 450px 250px;
   background-repeat:no-repeat;
   background-position: center;
@@ -82,7 +82,7 @@ div.container{
   display: flex;
   flex-direction: row;
   padding-top: 100px;
-  background-image: url(WireFrameImgs/sharkman.jpg);
+  background-image: url(Images/sharkman.jpg);
   background-size: 400px 400px;
   background-repeat:no-repeat;
   background-position: right;
@@ -160,7 +160,7 @@ bookmarkContent,li{
 .footersec{
   height: 255px;
   width:100%;
-  background-image: url(WireFrameImgs/waves.png);
+  background-image: url(Images/waves.png);
   background-position: center;
   background-size: cover;
 }
@@ -184,7 +184,7 @@ bookmarkContent,li{
     font-family: 'Russo One', sans-serif;
     font-size: 20px;
     height: 75px;
-    background-image: url(WireFrameImgs/sharkfin.jpg);
+    background-image: url(Images/sharkfin.jpg);
     background-size: 50px 50px;
     background-position: right 20px bottom 10px;
   }
@@ -201,7 +201,7 @@ bookmarkContent,li{
   .footersec{
     height:150px;
     width:100%;
-    background-image:url(WireFrameImgs/waves.png);
+    background-image:url(Images/waves.png);
     background-position:center;
     background-size:cover;
     z-index:0;
