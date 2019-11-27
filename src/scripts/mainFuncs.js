@@ -10,16 +10,6 @@ function handleAddBookmark () {
     createNewForm();
   });
 }
-
-//hides and shows form
-function showForm(boolean){
-  if(boolean){
-    $('.addFormArea').show();
-  }else{
-    $('.addFormArea').hide();
-  }
-
-}
 //after add is clicked this form is rendered to add a new bookmark
 function createNewForm () {
   $('.addFormArea').html (`
@@ -44,8 +34,16 @@ function createNewForm () {
       </div>
     </form>
   `);
+} 
+//hides and shows form
+function showForm(boolean){
+  if(boolean){
+    $('.addFormArea').show();
+  }else{
+    $('.addFormArea').hide();
+  }
 }
-
+//clears form
 function clearForm(){
   $('#newBookmarkTitle').val('');
   $('#newBookmarkURL').val('');
@@ -81,7 +79,6 @@ function addBookmarkSubmit (){
   });
   
 };
-
 //when the user fills a bookmark form and wants to cancel the add
 function handleCancel () {
   $('body').on('click', '.cancelEntry', function(event) {
@@ -91,14 +88,12 @@ function handleCancel () {
     console.log('i was canceled');
   })
 }
-
 //serialize form
-function serializeJson(title, url, rating, desc,) {
+function serializeJson(title, url, rating, desc) {
   return JSON.stringify({ 
     title, url, rating, desc
   });
 }
-
 //renders Addedcontent
 function renderForm (arr) {
   arr= arr || store.bookmarkObj.bookmarks;
@@ -117,18 +112,15 @@ function renderForm (arr) {
   }
   $('.displayBookmarks').html(htmlString)
 }
-
-/*when a bookmark that has been added is pressed, it expands and shows URL,Descr., Rating and the option to delete */
-
+/*when a + is pressed it expands and shows URL,Descr,Rating and the option to delete */
 function handleExpand () {
   $('.displayBookmarks').on('click','.expand', function (event) {
     console.log('i was clicked')
     event.preventDefault();
     $(event.currentTarget).siblings(".toggleHidden").toggleClass("hidden")
-  })
+  });
 }
-
-//appears after bookmark are expanded as an option
+//delete added bookmark
 function deletePressed () { 
   $('.displayBookmarks').on('click', '.deletebutton', function (event){
     let id = $(event.currentTarget).data("id");
@@ -139,8 +131,7 @@ function deletePressed () {
       });
   });
 }
-
-
+//filter the ratings
 function filterRating () {
   $('body').on('change','.filter', function(event) {
     let newRating=$(event.target).find(':selected').val();
@@ -148,7 +139,6 @@ function filterRating () {
     renderForm(newArr);
   })
 }
-
 //generates the event listeners
 function generateEventListeners () {
   createNewForm();
@@ -160,7 +150,6 @@ function generateEventListeners () {
   filterRating();
   clearForm();
 }
-
 export default {
   createNewForm,
   generateEventListeners,
