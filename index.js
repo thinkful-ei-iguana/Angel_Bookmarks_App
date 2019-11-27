@@ -1,6 +1,6 @@
-import store from './store.js';
-import api from './api.js';
-import mainFuncs from './mainFuncs.js';
+import store from './src/scripts/store.js';
+import api from './src/scripts/api.js';
+import mainFuncs from './src/scripts/mainFuncs.js';
 
 function main () {
   api.getBookmarks()
