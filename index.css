@@ -1,104 +1,38 @@
-* {
-  font-family:'Russo One', sans-serif;
-  background-color: rgb(96,191,254);
-  box-sizing: border-box;
-  border-radius: 3px;
+/* import font fam */
+*{
+  font-family: ;
+  margin: 0;
+  padding: 0;
+  outline: none;
   
 }
-h1{
-  background: transparent;
-  padding-top: 50px;
-  padding-left: 35px;
-  padding-bottom: 50px;
-  text-decoration: black underline;
-  border: 3px solid black;
-
+body {
+  
+  background: url('./Images/163-1639542_nature-water-sea-ocean-beach-sunrise-rocks-seashore.jpg') no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
 }
+label {
+  display: none;
+}
+
+.hidden{
+  display: none;
+}
+
+
 .title {
   text-align: left;
   color: black;
   font-family: 'Russo One', sans-serif;
   font-size: 25px;
   height: 150px;
-  background-image: url(Images/shark.gif);
-  background-size: 450px 250px;
-  background-repeat:no-repeat;
-  background-position: center;
-  
+  margin-bottom: 0 ;
 }
-
-/* Buttons */
-button.deletebutton{
-  padding: 5px;
-  font-size: 15px;
-  background-color:rgb(96 , 96  , 96);
-  color: rgb(255,255,255)
-}
-button.expand{
-  padding:5px;
-  font-size: 15px;
-  background-color:rgb(96 , 96  , 96);
-  justify-content: flex-end;
-  color: rgb(255,255,255);
-}
-button.confirmAdd{
-  padding: 15px;
-  background-color:rgb(96 , 96  , 96);
-  color: rgb(255,255,255);
-}
-button.cancelEntry{
-  padding:15px;
-  background-color:rgb(96 , 96  , 96);
-  color: rgb(255,255,255);
-}
-
-div.container{
+.btnContainer {
   display: flex;
   justify-content: center;
-  flex-direction: row;
   align-items: center;
-  margin-top: 35px;
-}
-
-.addNew {
-  font-size: 15px;
-  background-color:rgb(96,96,96);
-  padding: 15px;
-  margin:20px;
-  color: rgb(255,255,255);
-}
-.filter{
-  font-size: 15px;
-  background-color:rgb(96,96,96);
-  padding: 15px;
-  margin:20px;
-  color: rgb(255,255,255);
-}
-
-.filter select{
-  color: rgb(96,96,96);
-}
-.displaymarks{
-  display: flex;
-  flex-direction: row;
-  padding-top: 100px;
-  background-image: url(Images/sharkman.jpg);
-  background-size: 400px 400px;
-  background-repeat:no-repeat;
-  background-position: right;
-  padding-right: 125px;
-}
-
-/* Form Stuff */
-.addedBookmarkForm {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  border: 3px black;
-  padding: 50px;
-}
-.addedBookmarkForm input{
-  background-color: rgb(255,255,255);
 }
 
 /* Rating Stuff */
@@ -113,102 +47,228 @@ div.container{
   background-color:rgb(96 , 96  , 96);;
 }
 
-
-/* New Bookmark stuff */
-section.addFormArea{
-  justify-content: center;
-  border: solid black;
-  display: block;
+/* Buttons */
+.btn {
+  text-align: center;
+  padding: 15px;
+  border-radius: 3px;
+  background-color:rgb(96 , 96  , 96);
+  color: rgb(255,255,255);
+  cursor: pointer;
+  text-transform: uppercase;
+  border: 0;
 }
 
-/* Added Bookmark content */
-.displayBookmarks{
-  display:inline-flex;
+.addNew {
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  background:#39b7dd;
+  color:#fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: 0;
+}
+.filter{
+  font-size: 15px;
+  background-color:rgb(96,96,96);
+  padding: 15px;
+  margin:20px;
+  color: rgb(255,255,255);
+}
+
+.filter select{
+  color: rgb(96,96,96);
+}
+
+/* Form Styles */
+.addFormArea {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  /* padding: 0 20px; */
+}
+.addedBookmarkForm {
+  display: flex;
+  position: relative;
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 5px;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+}
+.input-fields {
+  display: flex;
   flex-direction:column;
-  justify-content:left;
-  padding-bottom:90px;
+  margin-right: 4%;
+}
+.input {
+  margin: 10px;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #c5ecfd;
+  padding: 10px;
+  width: 50%;
+  color: #c5ecfd;
+}
+.input #bookmarkDescription {
+  margin: 10px 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #c5ecfd;
+  padding: 10px;
+  color: #c5ecfd;
+  width: 100%;
 }
 
-ul.bookmarkContent{
-  display: inline-flex;
+::-webkit-input-placeholder {
+  color: #c5ecfd;
+}
+
+.formButtons {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+.confirmAdd {
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  background:#39b7dd;
+  color:#fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  border: 0;
+  margin:5px;
+}
+
+.cancelEntry {
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  background:#39b7dd;
+  color:#fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  border: 0;
+}
+
+/* Added Bookmark Styles */
+
+
+.displayBookmarks {
+  /* display:flex;
+  flex-direction:column;
+  justify-content:left; */
+  border: 2px solid yellow;
+}
+
+.mymarks {
+  border: 2px solid red;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
+  font-size: 26px;
+  /* width: 100%; */
+}
+
+.displaymarks {
+  border: 2px solid blue;
+  margin-bottom: 0 auto;
+}
+
+
+ul.bookmarkContent {
+  display: flex;
   flex-direction: column;
   justify-content: left;
   border: solid black;
   background-color:rgb(255,255,255);
   width: 100%;
-  margin-bottom: 25px;
   list-style-type: none;
   padding:0;
   width: auto;
   height: auto;
 }
 
-bookmarkContent,li{
-  display: inline-flex;
+bookmarkContent li {
+  display: flex;
   background-color:rgb(255,255,255);
   font-size: 20px;
-  padding: 10px;
-  margin-right: 250px;
   text-align: left;
   text-decoration: underline black;
  
 }
 
+.deletebutton {
+  text-align: center;
+  padding: 15px;
+  border-radius: 3px;
+  background-color:rgb(96 , 96  , 96);
+  color: rgb(255,255,255);
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.expand {
+  text-align: center;
+  padding: 15px;
+  border-radius: 3px;
+  background-color:rgb(96 , 96  , 96);
+  color: rgb(255,255,255);
+  cursor: pointer;
+  text-transform: uppercase;
+}
 
-.site-footer{
-  /* padding: 1% 0; */
-  height: 255px;
-  width:100%;
-  background-image: url(Images/waves.png);
-  background-position: center;
-  background-size: cover;
-  position: relative;
-  padding: 10,10,0,10;
-  margin-top:300px;
+
+
+@media screen and (max-width: 600px ) {
   
-}
-
-.hidden{
-  display: none;
-}
-
-
-@media screen and (max-width: 1024px ) {
-  h1{
-    padding:0px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    padding-right: 50px;
+  .addedBookmarkForm {
+    flex-direction: column;
+    padding: 15px;
+    width: 60%;
   }
-  .title {
-    padding-bottom: 10px;
-    height: 25px;
+  .addFormArea {
+    width: 100%;
+    overflow: hidden;
+    
+  }
+  .input {
+    width: 80%;
+  }
+  .confirmAdd {
     text-align: center;
-    font-family: 'Russo One', sans-serif;
-    font-size: 20px;
-    height: 75px;
-    background-image: url(Images/sharkfin.jpg);
-    background-size: 50px 50px;
-    background-position: right 20px bottom 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background:#39b7dd;
+    color:#fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    border: 0;
+  }
+  .cancelEntry {
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background:#39b7dd;
+    color:#fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    border: 0;
   }
   .filtersec {
     align-items:center;
     margin-bottom:25px;
     font-size:15px;
   }
-  .addedBookmarkForm {
-    align-self:center;
-    width:100%;
-    padding-top:50px;
-  }
-  .footersec{
-    height:150px;
-    width:100%;
-    background-image:url(Images/waves.png);
-    background-position:center;
-    background-size:cover;
-    z-index:0;
-  }
+  
   div.container{
     display:flex;
     justify-content:center;
@@ -234,17 +294,13 @@ bookmarkContent,li{
     justify-content:center;
     padding-left: 30px;
   }
-  .displaymarks{
-    background-image:none;
-  }
-
-  .displayBookmarks{
+  
+  .displayBookmarks {
     display:inline-flex;
     flex-direction:column;
     justify-content:center;
-    padding-bottom:90px;
   }
-  ul.bookmarkContent{
+  /* ul.bookmarkContent{
     display: inline-flex;
     flex-direction: row;
     justify-content: left;
@@ -263,7 +319,7 @@ bookmarkContent,li{
     margin-right: auto;
     text-align: left;
    
-  }
+  } */
   button.deletebutton{
     padding: 5px;
     font-size: 10px;
@@ -275,16 +331,6 @@ bookmarkContent,li{
     font-size: 10px;
     background-color:rgb(96 , 96  , 96);
     justify-content: flex-end;
-    color: rgb(255,255,255);
-  }
-  button.confirmAdd{
-    padding: 10px;
-    background-color:rgb(96 , 96  , 96);
-    color: rgb(255,255,255);
-  }
-  button.cancelEntry{
-    padding:10px;
-    background-color:rgb(96 , 96  , 96);
     color: rgb(255,255,255);
   }
 }

@@ -6,18 +6,22 @@ function handleAddBookmark () {
   $('.addNew').on('click', function(event) {
     event.preventDefault();
     showForm(true);
+    // showMarks(false);
     console.log('add was clicked');
     createNewForm();
   });
 }
+
 //after add is clicked this form is rendered to add a new bookmark
 function createNewForm () {
   $('.addFormArea').html (`
     <form class="addedBookmarkForm" id="addedForm>
-      <label for="newBookmarkTitle"> New Bookmark: </label>
-      <input type="text" name= "newBookmarkTitle" id="newBookmarkTitle" required ></br>
-      <label  for="newBookmarkURL"> URL: </label>
-      <input type="url" name="newBookmarkURL" id="newBookmarkURL" required></br>
+      <div class="input-fields">
+        <label for="newBookmarkTitle"> New Bookmark: </label>
+        <input type="text" name="newBookmarkTitle" class="input" placeholder="Bookmark Title..." id="newBookmarkTitle" required ></br>
+        <label  for="newBookmarkURL"> URL: </label>
+        <input type="url" name="newBookmarkURL" placeholder="URL..." class="input" id="newBookmarkURL" required></br>
+      </div>
       <select id="newBookmarkRating" name="newBookmarkRating" required>
         <option value=""> Rating... </option>
         <option value="5">5</option>
@@ -27,10 +31,10 @@ function createNewForm () {
         <option value="1">1</option>
       </select></br>
       <label for = "description"> Description: </label>
-      <input type="text" name="Description" id="bookmarkDescription" required ></br>
+      <input type="text" name="Description" placeholder="Description..." class="input" id="bookmarkDescription" required ></br>
       <div class = "formButtons">
-        <button class = "cancelEntry" type= "button"> Cancel </button>
-        <button class = "confirmAdd" type= "submit"> Add Bookmark</button>
+        <button class="confirmAdd" type= "submit"> Add Bookmark</button>
+        <button class="cancelEntry" type= "button"> Cancel </button>
       </div>
     </form>
   `);
@@ -38,11 +42,24 @@ function createNewForm () {
 //hides and shows form
 function showForm(boolean){
   if(boolean){
-    $('.addFormArea').show();
+    $('.addFormArea').show() && $('.displaymarks').hide();
   }else{
-    $('.addFormArea').hide();
+    $('.addFormArea').hide() && $('.displaymarks').show();
   }
 }
+
+function pageLoad() {
+  $('.addFormArea').hide() ;
+  // && $('.displaymarks').hide()
+}
+// function showMarks(boolean){
+//   if(boolean){
+//     $('.displaymarks').hide();
+//   } else {
+//     $('.displaymarks').show();
+//   }
+// }
+
 //clears form
 function clearForm(){
   $('#newBookmarkTitle').val('');
@@ -100,14 +117,16 @@ function renderForm (arr) {
   let htmlString = ''
   for(let i = 0; i < arr.length; i++){
     htmlString += `
-    <ul class = "bookmarkContent" id="bookmark-content" >
-      <li>Title: ${arr[i].title} </li>
-      <li class ="toggleHidden hidden">URL: ${arr[i].url}</li>
-      <li class ="toggleHidden hidden">Description: ${arr[i].desc}</li>
-      <li>Rating: ${arr[i].rating}</li></br>
-      <button class = "deletebutton" data-id=${arr[i].id}> Delete Bookmark </button>
-      <button class = "expand" > + </button>
-    </ul>
+    <div class="bookmarkList">
+      <ul class = "bookmarkContent" id="bookmark-content" >
+        <li>Title: ${arr[i].title} </li>
+        <li class ="toggleHidden hidden"> <a href="${arr[i].url}">${arr[i].url}  </a></li>
+        <li class ="toggleHidden hidden">Description: ${arr[i].desc}</li>
+        <li>Rating: ${arr[i].rating}</li></br>
+        <button class = "deletebutton" data-id=${arr[i].id}> Delete Bookmark </button>
+        <button class = "expand" > + </button>
+      </ul>
+    </div>
     `
   }
   $('.displayBookmarks').html(htmlString)
@@ -142,6 +161,9 @@ function filterRating () {
 //generates the event listeners
 function generateEventListeners () {
   createNewForm();
+  // showForm();
+  // showMarks();
+  pageLoad();
   addBookmarkSubmit();
   handleAddBookmark();
   handleExpand();

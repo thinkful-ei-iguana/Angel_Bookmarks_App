@@ -10,10 +10,10 @@
 </head>
 <body>
   <header class="header">
-    <section class="title">
+    
       <h1 aria-label="Sharkmarks"> Sharkmarks </h1>
-    </section>
-    <div class="container"> 
+   
+    <div class="btnContainer"> 
       <button class = "addNew" id="newBookmark" type = "button"> Add a Bookmark </button>
       <select class = "filter">
         <option value="">Sort By Rating</option>
@@ -27,13 +27,17 @@
   </header>
 
   <main> 
-    <section class = "addFormArea"></section>
-    <section class = "expandedForm"></section>
-    <section class="displaymarks"></div>
-      <ul class = "displayBookmarks"></ul>
-    </section>
-    <footer role="contentinfo" class="site-footer"> </footer>
+    <div class="addFormArea"></div>
+    <section class ="expandedForm"></section>
   </main>
+
+  <div class="mymarks">
+    <section class="displaymarks">
+      <ul class ="displayBookmarks"></ul>
+    </section>
+  </div>
+
+
   <script
   src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
   integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
