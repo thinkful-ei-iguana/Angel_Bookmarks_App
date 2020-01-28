@@ -1,30 +1,39 @@
-/* import font fam */
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Oswald&display=swap');
+
 *{
-  font-family: ;
   margin: 0;
   padding: 0;
   outline: none;
-  
 }
 body {
-  
-  background: url('./Images/163-1639542_nature-water-sea-ocean-beach-sunrise-rocks-seashore.jpg') no-repeat;
+  background: url('./Images/seashore.jpg') no-repeat;
   background-size: 100% 100%;
   height: 100vh;
+  background-color:#39b7dd;
+  background-blend-mode: luminosity;
+}
+h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 40px;
+  background-color:rgba(0, 0, 0, 0.8) ;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
 }
 label {
   display: none;
 }
-
-.hidden{
+a {
+  color: #39b7dd;
+  cursor: pointer;
+}
+.hidden {
   display: none;
 }
-
 
 .title {
   text-align: left;
   color: black;
-  font-family: 'Russo One', sans-serif;
   font-size: 25px;
   height: 150px;
   margin-bottom: 0 ;
@@ -33,53 +42,44 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 80px;
 }
 
-/* Rating Stuff */
-.rating-selection{
-  position: relative;
-  font-family:'Russo One', sans-serif; 
-}
- #newBookmarkRating {
-  background-color:rgb(255,255,255);
-}
-.select-selected{
-  background-color:rgb(96 , 96  , 96);;
-}
 
 /* Buttons */
-.btn {
-  text-align: center;
-  padding: 15px;
-  border-radius: 3px;
-  background-color:rgb(96 , 96  , 96);
-  color: rgb(255,255,255);
-  cursor: pointer;
-  text-transform: uppercase;
-  border: 0;
-}
+
 
 .addNew {
   text-align: center;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 3px;
   background:#39b7dd;
   color:#fff;
   cursor: pointer;
   text-transform: uppercase;
   border: 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
 }
-.filter{
-  font-size: 15px;
-  background-color:rgb(96,96,96);
+.filter {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  background:#39b7dd url('./Images/sharkjaws.png') no-repeat 98% 50%;
+  cursor: pointer;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
   padding: 15px;
+  padding-right: 40px;
   margin:20px;
-  color: rgb(255,255,255);
+  color:#fff;
+  border-radius: 3px;
+  font-family: 'Oswald', sans-serif;
+  border: 0px;
+  text-transform: uppercase;
 }
 
-.filter select{
-  color: rgb(96,96,96);
-}
 
 /* Form Styles */
 .addFormArea {
@@ -87,7 +87,6 @@ label {
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
-  /* padding: 0 20px; */
 }
 .addedBookmarkForm {
   display: flex;
@@ -100,6 +99,24 @@ label {
   background: rgba(0, 0, 0, 0.8);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
 }
+#newBookmarkRating {
+  width: 55%;
+  background: #39b7dd;
+  color:#c5ecfd ;
+  border: 0;
+  padding: .8rem 3rem .8rem .5rem;
+  border-radius: 3px;
+  font-size: 26px;
+  font-family: 'Oswald', sans-serif;
+  box-shadow:  0 5px 25px rgba(0,0,0,.5);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+      appearance: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: 2%;
+}
+
 .input-fields {
   display: flex;
   flex-direction:column;
@@ -109,13 +126,16 @@ label {
   margin: 10px;
   background: transparent;
   border: 0;
-  border-bottom: 2px solid #c5ecfd;
+  font-size: 26px;
+  font-family: 'Oswald', sans-serif;
+  border-bottom: 2px solid #39b7dd;;
   padding: 10px;
   width: 50%;
   color: #c5ecfd;
 }
 .input #bookmarkDescription {
   margin: 10px 0;
+  font-size: 16px;
   background: transparent;
   border: 0;
   border-bottom: 2px solid #c5ecfd;
@@ -125,14 +145,14 @@ label {
 }
 
 ::-webkit-input-placeholder {
-  color: #c5ecfd;
+  color: #fff;
 }
 
 .formButtons {
-  display: flex;
-  justify-content: left;
-  align-items: left;
+  margin-left: auto;
+  margin-right: 0px;
 }
+
 .confirmAdd {
   text-align: center;
   padding: 15px;
@@ -144,6 +164,7 @@ label {
   outline: none;
   border: 0;
   margin:5px;
+  font-family: 'Oswald', sans-serif;
 }
 
 .cancelEntry {
@@ -156,39 +177,43 @@ label {
   text-transform: uppercase;
   outline: none;
   border: 0;
+  font-family: 'Oswald', sans-serif;
 }
 
 /* Added Bookmark Styles */
 
-
 .displayBookmarks {
-  /* display:flex;
-  flex-direction:column;
-  justify-content:left; */
-  border: 2px solid yellow;
+  /* border: 2px solid yellow; */
+  width: 100%;
 }
 
 .mymarks {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   margin-left: 25%;
   margin-right: 25%;
   text-align: center;
   font-size: 26px;
+  color:#fff;
   /* width: 100%; */
 }
 
 .displaymarks {
-  border: 2px solid blue;
+  /* border: 2px solid #39b7dd; */
   margin-bottom: 0 auto;
 }
 
 
+
+
 ul.bookmarkContent {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   justify-content: left;
-  border: solid black;
-  background-color:rgb(255,255,255);
+  /* border: solid black; */
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.8);
   width: 100%;
   list-style-type: none;
   padding:0;
@@ -196,30 +221,35 @@ ul.bookmarkContent {
   height: auto;
 }
 
-bookmarkContent li {
-  display: flex;
-  background-color:rgb(255,255,255);
-  font-size: 20px;
-  text-align: left;
-  text-decoration: underline black;
- 
+.bookmarkContent li {
+  font-family: 'Oswald', sans-serif;
+  text-decoration: underline #39b7dd;
+  margin-bottom: 10px;
 }
 
-.deletebutton {
+#deletebutton {
+  margin-left: 75%;
+  margin-right: 5px;
+  margin-bottom: 5px;
   text-align: center;
+  border: 0;
   padding: 15px;
   border-radius: 3px;
-  background-color:rgb(96 , 96  , 96);
-  color: rgb(255,255,255);
+  background:#39b7dd;
+  color: #fff;
   cursor: pointer;
-  text-transform: uppercase;
 }
 .expand {
+  margin-left: 75%;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
   text-align: center;
-  padding: 15px;
+  padding: 5px;
   border-radius: 3px;
-  background-color:rgb(96 , 96  , 96);
-  color: rgb(255,255,255);
+  border: 0;
+  background:#39b7dd;
+  color: #fff;
   cursor: pointer;
   text-transform: uppercase;
 }
@@ -227,7 +257,19 @@ bookmarkContent li {
 
 
 @media screen and (max-width: 600px ) {
-  
+  h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 32px;
+    padding: 2px;
+  }
+  .btnContainer {
+    margin-top: 25px;
+  }
+  #newBookmarkRating {
+    margin-left: 3%;
+    width: 96% ;
+    font-size: 16px;
+  }
   .addedBookmarkForm {
     flex-direction: column;
     padding: 15px;
@@ -236,10 +278,11 @@ bookmarkContent li {
   .addFormArea {
     width: 100%;
     overflow: hidden;
-    
+    margin-top:75px;
   }
   .input {
     width: 80%;
+    font-size: 16px;
   }
   .confirmAdd {
     text-align: center;
@@ -278,15 +321,17 @@ bookmarkContent li {
   }
   .addNew {
     display:flex;
-    font-size:10px;
+    font-size:12px;
     margin:10px;
-    padding-top:5;
+    padding:18px;
   }
   .filter{
     display:flex;
-    font-size:10px;
+    font-size:14px;
     margin:10px;
-    padding:5;
+    padding:15px;
+    background-size: 25px;
+    padding-right: 30px;
   }
   main.displaymarks{
     display:flex;
@@ -300,37 +345,33 @@ bookmarkContent li {
     flex-direction:column;
     justify-content:center;
   }
-  /* ul.bookmarkContent{
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: left;
-    width: 100%;
-    margin-bottom: 25px;
-    list-style-type: none;
-    padding:auto;
-    width: auto;
-    height: auto;
-  }
-  bookmarkContent,li{
-    display: inline-flex;
-    background-color:rgb(255,255,255);
+
+  .mymarks {
+    /* border: 2px solid red; */
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
     font-size: 15px;
-    padding: 10px;
-    margin-right: auto;
-    text-align: left;
-   
-  } */
-  button.deletebutton{
+    color:rgb(255,255,255);
+    /* width: 100%; */
+  }
+  .bookmarkContent li {
+    text-decoration: underline #39b7dd;
+    margin-bottom: 5px;
+  }
+ 
+  #deletebutton{
+    margin-left: 50%;
     padding: 5px;
     font-size: 10px;
-    background-color:rgb(96 , 96  , 96);
-    color: rgb(255,255,255)
+    background:#39b7dd;
+    color: #fff;
   }
-  button.expand{
+  .expand{
     padding:5px;
     font-size: 10px;
-    background-color:rgb(96 , 96  , 96);
+    background:#39b7dd;
     justify-content: flex-end;
-    color: rgb(255,255,255);
+    color: #fff;
   }
 }

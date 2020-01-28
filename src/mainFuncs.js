@@ -18,12 +18,12 @@ function createNewForm () {
     <form class="addedBookmarkForm" id="addedForm>
       <div class="input-fields">
         <label for="newBookmarkTitle"> New Bookmark: </label>
-        <input type="text" name="newBookmarkTitle" class="input" placeholder="Bookmark Title..." id="newBookmarkTitle" required ></br>
+        <input type="text" name="newBookmarkTitle" class="input" placeholder="Bookmark Title . . ." id="newBookmarkTitle" required ></br>
         <label  for="newBookmarkURL"> URL: </label>
-        <input type="url" name="newBookmarkURL" placeholder="URL..." class="input" id="newBookmarkURL" required></br>
+        <input type="url" name="newBookmarkURL" placeholder="URL . . ." class="input" id="newBookmarkURL" required></br>
       </div>
       <select id="newBookmarkRating" name="newBookmarkRating" required>
-        <option value=""> Rating... </option>
+        <option value=""> Rating . . . </option>
         <option value="5">5</option>
         <option value="4">4</option>
         <option value="3">3</option>
@@ -31,10 +31,11 @@ function createNewForm () {
         <option value="1">1</option>
       </select></br>
       <label for = "description"> Description: </label>
-      <input type="text" name="Description" placeholder="Description..." class="input" id="bookmarkDescription" required ></br>
+      <input type="text" name="Description" placeholder="Description . . ." class="input" id="bookmarkDescription" required ></br>
       <div class = "formButtons">
-        <button class="confirmAdd" type= "submit"> Add Bookmark</button>
         <button class="cancelEntry" type= "button"> Cancel </button>
+
+        <button class="confirmAdd" type= "submit"> Add </button>
       </div>
     </form>
   `);
@@ -119,12 +120,13 @@ function renderForm (arr) {
     htmlString += `
     <div class="bookmarkList">
       <ul class = "bookmarkContent" id="bookmark-content" >
+      <button class = "expand" > + </button>
         <li>Title: ${arr[i].title} </li>
         <li class ="toggleHidden hidden"> <a href="${arr[i].url}">${arr[i].url}  </a></li>
         <li class ="toggleHidden hidden">Description: ${arr[i].desc}</li>
         <li>Rating: ${arr[i].rating}</li></br>
-        <button class = "deletebutton" data-id=${arr[i].id}> Delete Bookmark </button>
-        <button class = "expand" > + </button>
+        
+        <button class ="toggleHidden hidden" id="deletebutton" data-id=${arr[i].id}> Delete </button>
       </ul>
     </div>
     `
@@ -141,7 +143,7 @@ function handleExpand () {
 }
 //delete added bookmark
 function deletePressed () { 
-  $('.displayBookmarks').on('click', '.deletebutton', function (event){
+  $('.displayBookmarks').on('click', '#deletebutton', function (event){
     let id = $(event.currentTarget).data("id");
     api.deleteBookmark(id)
       .then(( ) => {
