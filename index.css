@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Oswald&display=swap');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 *{
   margin: 0;
@@ -31,24 +32,13 @@ a {
   display: none;
 }
 
-.title {
-  text-align: left;
-  color: black;
-  font-size: 25px;
-  height: 150px;
-  margin-bottom: 0 ;
-}
+/* Top Buttons */
 .btnContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 80px;
 }
-
-
-/* Buttons */
-
-
 .addNew {
   text-align: center;
   padding: 15px;
@@ -98,10 +88,11 @@ a {
   flex-direction: column;
   background: rgba(0, 0, 0, 0.8);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+  outline: 0;
 }
 #newBookmarkRating {
   width: 55%;
-  background: #39b7dd;
+  background:#39b7dd url('./Images/arrow-down.png')no-repeat 93% 50%;
   color:#c5ecfd ;
   border: 0;
   padding: .8rem 3rem .8rem .5rem;
@@ -116,7 +107,6 @@ a {
   cursor: pointer;
   margin-left: 2%;
 }
-
 .input-fields {
   display: flex;
   flex-direction:column;
@@ -143,16 +133,13 @@ a {
   color: #c5ecfd;
   width: 100%;
 }
-
 ::-webkit-input-placeholder {
   color: #fff;
 }
-
 .formButtons {
   margin-left: auto;
   margin-right: 0px;
 }
-
 .confirmAdd {
   text-align: center;
   padding: 15px;
@@ -166,7 +153,6 @@ a {
   margin:5px;
   font-family: 'Oswald', sans-serif;
 }
-
 .cancelEntry {
   text-align: center;
   padding: 15px;
@@ -183,34 +169,23 @@ a {
 /* Added Bookmark Styles */
 
 .displayBookmarks {
-  /* border: 2px solid yellow; */
   width: 100%;
 }
-
 .mymarks {
-  /* border: 2px solid red; */
+  text-align: left;
   margin-left: 25%;
   margin-right: 25%;
-  text-align: center;
   font-size: 26px;
   color:#fff;
-  /* width: 100%; */
 }
-
 .displaymarks {
-  /* border: 2px solid #39b7dd; */
   margin-bottom: 0 auto;
 }
-
-
-
-
 ul.bookmarkContent {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  justify-content: left;
   /* border: solid black; */
   border-radius: 3px;
   background: rgba(0, 0, 0, 0.8);
@@ -225,6 +200,7 @@ ul.bookmarkContent {
   font-family: 'Oswald', sans-serif;
   text-decoration: underline #39b7dd;
   margin-bottom: 10px;
+  margin-left: 5px;
 }
 
 #deletebutton {
@@ -241,7 +217,6 @@ ul.bookmarkContent {
 }
 .expand {
   margin-left: 75%;
-  margin-bottom: 5px;
   margin-right: 5px;
   margin-top: 5px;
   text-align: center;
@@ -255,10 +230,8 @@ ul.bookmarkContent {
 }
 
 
-
 @media screen and (max-width: 600px ) {
   h1 {
-    font-family: 'Bebas Neue', cursive;
     font-size: 32px;
     padding: 2px;
   }
@@ -269,14 +242,16 @@ ul.bookmarkContent {
     margin-left: 3%;
     width: 96% ;
     font-size: 16px;
+    background-size: 20px;
+  }
+  .filter {
+    background-size: 20px;
   }
   .addedBookmarkForm {
-    flex-direction: column;
     padding: 15px;
     width: 60%;
   }
   .addFormArea {
-    width: 100%;
     overflow: hidden;
     margin-top:75px;
   }
@@ -285,39 +260,14 @@ ul.bookmarkContent {
     font-size: 16px;
   }
   .confirmAdd {
-    text-align: center;
     padding: 5px;
-    border-radius: 5px;
-    background:#39b7dd;
     color:#fff;
     cursor: pointer;
-    text-transform: uppercase;
-    outline: none;
-    border: 0;
   }
   .cancelEntry {
-    text-align: center;
     padding: 5px;
-    border-radius: 5px;
-    background:#39b7dd;
-    color:#fff;
     cursor: pointer;
     text-transform: uppercase;
-    outline: none;
-    border: 0;
-  }
-  .filtersec {
-    align-items:center;
-    margin-bottom:25px;
-    font-size:15px;
-  }
-  
-  div.container{
-    display:flex;
-    justify-content:center;
-    flex-direction:row;
-    align-items:center;
-    margin-top:35px;
   }
   .addNew {
     display:flex;
@@ -325,38 +275,18 @@ ul.bookmarkContent {
     margin:10px;
     padding:18px;
   }
-  .filter{
+  .filter {
     display:flex;
     font-size:14px;
     margin:10px;
-    padding:15px;
-    background-size: 25px;
     padding-right: 30px;
   }
-  main.displaymarks{
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    padding-left: 30px;
-  }
   
-  .displayBookmarks {
-    display:inline-flex;
-    flex-direction:column;
-    justify-content:center;
-  }
-
   .mymarks {
-    /* border: 2px solid red; */
-    margin-left: 25%;
-    margin-right: 25%;
-    text-align: center;
     font-size: 15px;
-    color:rgb(255,255,255);
-    /* width: 100%; */
+    color:#fff;
   }
   .bookmarkContent li {
-    text-decoration: underline #39b7dd;
     margin-bottom: 5px;
   }
  

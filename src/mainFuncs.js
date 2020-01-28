@@ -48,18 +48,11 @@ function showForm(boolean){
     $('.addFormArea').hide() && $('.displaymarks').show();
   }
 }
-
+//hides form on page load
 function pageLoad() {
-  $('.addFormArea').hide() ;
-  // && $('.displaymarks').hide()
+  $('.addFormArea').hide();
 }
-// function showMarks(boolean){
-//   if(boolean){
-//     $('.displaymarks').hide();
-//   } else {
-//     $('.displaymarks').show();
-//   }
-// }
+
 
 //clears form
 function clearForm(){
